@@ -1,116 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BandFit</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BandFit Pro Max</title>
+
+  <meta name="theme-color" content="#0b1220" />
+
   <style>
     body{
       margin:0;
       font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial;
-      background:linear-gradient(180deg,#0f172a,#1e293b);
+      background:#0b1220;
       color:#fff;
     }
 
-    .app{
-      max-width:420px;
-      margin:0 auto;
-      min-height:100vh;
-      display:flex;
-      flex-direction:column;
-      background:#0b1220;
-    }
+    .app{max-width:430px;margin:0 auto;min-height:100vh;display:flex;flex-direction:column;}
 
-    .header{
-      padding:20px;
-    }
+    .header{padding:16px;}
+    .title{font-size:22px;font-weight:700;}
+    .stats{display:flex;justify-content:space-between;font-size:12px;color:#94a3b8;margin-top:6px;}
 
-    .title{
-      font-size:26px;
-      font-weight:700;
-    }
+    .content{flex:1;overflow:auto;padding:12px;}
 
-    .stats{
-      display:flex;
-      justify-content:space-between;
-      margin-top:10px;
-      font-size:12px;
-      color:#94a3b8;
-    }
-
-    .content{
-      flex:1;
-      padding:15px;
-      overflow-y:auto;
-    }
-
-    .card{
-      background:#111827;
-      border-radius:20px;
-      padding:15px;
-      margin-bottom:15px;
-    }
+    .card{background:#111827;border-radius:18px;padding:14px;margin-bottom:12px;}
 
     .day{font-size:18px;font-weight:700;}
-    .focus{font-size:12px;color:#94a3b8;margin-bottom:10px;}
+    .focus{font-size:12px;color:#94a3b8;margin-bottom:8px;}
 
-    .exercise{
-      background:#0f172a;
-      padding:10px;
-      border-radius:12px;
-      margin-bottom:8px;
-      font-size:13px;
-    }
+    .exercise{background:#0f172a;padding:8px;border-radius:10px;margin-bottom:6px;font-size:13px;}
 
-    .btn{
-      width:100%;
-      padding:12px;
-      border:none;
-      border-radius:14px;
-      background:#3b82f6;
-      color:white;
-      font-weight:600;
-      margin-top:10px;
-    }
+    button{width:100%;padding:10px;border-radius:12px;border:none;margin-top:8px;font-weight:600;}
 
+    .complete{background:#3b82f6;color:#fff;}
     .done{background:#22c55e;}
 
-    .mini{
-      font-size:11px;
-      color:#94a3b8;
-      margin-top:5px;
-    }
+    .panel{background:#111827;padding:10px;border-radius:12px;margin-bottom:10px;}
 
-    .nav{
-      display:flex;
-      justify-content:space-around;
-      padding:12px;
-      background:#0f172a;
-      border-top:1px solid #1f2937;
-      font-size:12px;
-      color:#94a3b8;
-    }
+    input[type=range]{width:100%;}
 
-    .timer{
-      position:fixed;
-      bottom:80px;
-      left:50%;
-      transform:translateX(-50%);
-      background:#111827;
-      padding:15px;
-      border-radius:16px;
-      display:none;
-      text-align:center;
-    }
+    canvas{background:#0f172a;border-radius:12px;margin-top:10px;width:100%;}
 
-    .timer button{
-      margin-top:10px;
-      padding:8px 12px;
-      border:none;
-      border-radius:10px;
-      background:#ef4444;
-      color:white;
-    }
+    .grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-bottom:10px;}
+    .daybox{background:#111827;padding:6px;border-radius:6px;text-align:center;font-size:10px;}
+    .heat{background:#22c55e;color:#000;}
   </style>
 </head>
 <body>
@@ -118,108 +51,114 @@
 <div class="app">
 
   <div class="header">
-    <div class="title">BandFit</div>
+    <div class="title">BandFit Pro Max</div>
     <div class="stats">
-      <div>🔥 Streak: <span id="streak">0</span> days</div>
-      <div>🔥 Calories: <span id="calories">0</span></div>
+      <div>🔥 Streak: <span id="streak">0</span></div>
+      <div>🔥 Cal: <span id="cal">0</span></div>
     </div>
   </div>
 
-  <div class="content" id="app"></div>
+  <div class="content">
 
-  <div class="nav">
-    <div>Home</div>
-    <div>Plan</div>
-    <div>Progress</div>
+    <div class="panel">
+      🎯 Fatigue
+      <input id="fatigue" type="range" min="1" max="10" value="5" />
+      <button class="complete" onclick="generateAI()">Generate AI Workout</button>
+    </div>
+
+    <div class="grid" id="calendar"></div>
+
+    <canvas id="chart" height="120"></canvas>
+
+    <div id="app"></div>
+
   </div>
-
-</div>
-
-<div class="timer" id="timerBox">
-  <div>Rest Timer</div>
-  <div id="time">60</div>
-  <button onclick="stopTimer()">Stop</button>
 </div>
 
 <script>
-const workoutPlan=[
- {day:"Monday",focus:"Upper Body",cal:250,ex:["Band Chest Press","Push-ups","Plank"]},
- {day:"Tuesday",focus:"Lower Body",cal:300,ex:["Band Squats","Lunges","Glute Bridge"]},
- {day:"Wednesday",focus:"Recovery",cal:120,ex:["Walking","Stretching"]},
- {day:"Thursday",focus:"Back & Arms",cal:260,ex:["Band Rows","Bicep Curls"]},
- {day:"Friday",focus:"Full Body",cal:320,ex:["Squat to Press","Push-ups"]},
- {day:"Saturday",focus:"Conditioning",cal:280,ex:["Walk / Jog","Circuit"]},
- {day:"Sunday",focus:"Rest",cal:100,ex:["Rest"]}
-];
+let streak=+localStorage.getItem('streak')||0;
+let cal=+localStorage.getItem('cal')||0;
+let history=JSON.parse(localStorage.getItem('history')||'[]');
 
-const app=document.getElementById("app");
-let streak=localStorage.getItem("streak")||0;
-let calories=localStorage.getItem("calories")||0;
-
-function updateStats(){
- document.getElementById("streak").innerText=streak;
- document.getElementById("calories").innerText=calories;
+function save(){
+  localStorage.setItem('streak',streak);
+  localStorage.setItem('cal',cal);
+  localStorage.setItem('history',JSON.stringify(history));
 }
 
-function saveProgress(cal){
- let today=new Date().toDateString();
- let last=localStorage.getItem("lastDone");
+const streakEl=document.getElementById('streak');
+const calEl=document.getElementById('cal');
+streakEl.innerText=streak;
+calEl.innerText=cal;
 
- if(last!==today){
-   streak++;
-   calories+=cal;
-   localStorage.setItem("streak",streak);
-   localStorage.setItem("calories",calories);
-   localStorage.setItem("lastDone",today);
- }
- updateStats();
+const days=['S','M','T','W','T','F','S'];
+const calBox=document.getElementById('calendar');
+
+function buildCal(){
+  calBox.innerHTML='';
+  let d=new Date().getDay();
+  days.forEach((x,i)=>{
+    let el=document.createElement('div');
+    el.className='daybox'+(i<=d?' heat':'');
+    el.innerText=x;
+    calBox.appendChild(el);
+  });
+}
+buildCal();
+
+let workouts=[];
+
+function generateAI(){
+  let f=+document.getElementById('fatigue').value;
+  let plan=f>=8?['Walk','Stretch']:(f>=5?['Band Press','Push-ups','Squats']:['Burpees','Lunges','Plank']);
+  workouts=[{day:'Today',focus:'AI Plan',cal:200,ex:plan}];
+  render();
 }
 
-workoutPlan.forEach(d=>{
- const card=document.createElement("div");
- card.className="card";
+function render(){
+  const app=document.getElementById('app');
+  app.innerHTML='';
 
- let html=`<div class='day'>${d.day}</div>
- <div class='focus'>${d.focus}</div>`;
+  workouts.forEach(w=>{
+    let c=document.createElement('div');
+    c.className='card';
 
- d.ex.forEach(e=>html+=`<div class='exercise'>${e}</div>`);
+    let html=`<div class='day'>${w.day}</div><div class='focus'>${w.focus}</div>`;
+    w.ex.forEach(e=>html+=`<div class='exercise'>${e}</div>`);
+    html+=`<button class='complete'>Complete</button>`;
 
- html+=`<div class='mini'>🔥 Est. ${d.cal} kcal</div>`;
- html+=`<button class='btn'>Mark Complete</button>`;
- html+=`<button class='btn' style='background:#6b7280;margin-top:8px;' onclick='startTimer()'>Rest Timer</button>`;
+    c.innerHTML=html;
 
- card.innerHTML=html;
+    let btn=c.querySelector('button');
+    btn.onclick=()=>{
+      btn.classList.add('done');
+      btn.innerText='Done';
 
- const btn=card.querySelector(".btn");
- btn.onclick=()=>{
-   btn.classList.toggle("done");
-   btn.innerText=btn.classList.contains("done")?"Completed":"Mark Complete";
-   saveProgress(d.cal);
- };
+      streak++;
+      cal+=w.cal;
+      history.push({t:Date.now(),cal:w.cal});
 
- app.appendChild(card);
-});
+      save();
+      streakEl.innerText=streak;
+      calEl.innerText=cal;
+      draw();
+    };
 
-updateStats();
-
-let t;
-function startTimer(){
- let box=document.getElementById("timerBox");
- let time=document.getElementById("time");
- let sec=60;
- box.style.display="block";
-
- t=setInterval(()=>{
-   sec--;
-   time.innerText=sec;
-   if(sec<=0){stopTimer();}
- },1000);
+    app.appendChild(c);
+  });
 }
 
-function stopTimer(){
- clearInterval(t);
- document.getElementById("timerBox").style.display="none";
+function draw(){
+  let ctx=document.getElementById('chart').getContext('2d');
+  ctx.clearRect(0,0,400,120);
+
+  history.slice(-5).forEach((h,i)=>{
+    ctx.fillStyle='#22c55e';
+    ctx.fillRect(30+i*70,100,(h.cal%100),-(h.cal%80));
+  });
 }
+
+draw();
 </script>
 
 </body>
