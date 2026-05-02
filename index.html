@@ -98,6 +98,99 @@
         day: "Monday",
         focus: "Upper Body + Core",
         exercises: [
+          {
+            name: "Tube Band Chest Press – 3 x 12",
+            description: "Anchor the band behind you, hold handles at chest level, and press forward until arms are extended. Return slowly.",
+            image: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438"
+          },
+          {
+            name: "Tube Band Seated Row – 3 x 12",
+            description: "Sit with legs extended, loop the band around your feet, and pull handles toward your torso while squeezing shoulder blades.",
+            image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b"
+          },
+          {
+            name: "Push-ups – 3 x 10",
+            description: "Keep your body straight, hands under shoulders, lower chest to floor, then push back up.",
+            image: "https://images.unsplash.com/photo-1599058917212-d750089bc07e"
+          }
+        ]
+      },
+      {
+        day: "Tuesday",
+        focus: "Lower Body",
+        exercises: [
+          {
+            name: "Band Squats – 4 x 12",
+            description: "Stand on the band with feet shoulder-width apart, handles at shoulders, squat down and stand back up.",
+            image: "https://images.unsplash.com/photo-1434682881908-b43d0467b798"
+          },
+          {
+            name: "Reverse Lunges – 3 x 10 each leg",
+            description: "Step one foot backward, lower both knees to 90 degrees, then return to standing.",
+            image: "https://images.unsplash.com/photo-1518611012118-696072aa579a"
+          }
+        ]
+      },
+      {
+        day: "Wednesday",
+        focus: "Mobility + Recovery",
+        exercises: [
+          {
+            name: "Walking – 30 mins",
+            description: "Maintain a brisk pace and upright posture for active recovery.",
+            image: "https://images.unsplash.com/photo-1476480862126-209bfaa8edc8"
+          }
+        ]
+      },
+      {
+        day: "Thursday",
+        focus: "Back + Arms",
+        exercises: [
+          {
+            name: "Tube Band Lat Pulldown – 3 x 12",
+            description: "Anchor band overhead, pull handles down toward shoulders while keeping chest lifted.",
+            image: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd"
+          }
+        ]
+      },
+      {
+        day: "Friday",
+        focus: "Full Body Circuit",
+        exercises: [
+          {
+            name: "Band Squat to Press – 3 x 12",
+            description: "Perform a squat, then press the handles overhead as you stand up.",
+            image: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd"
+          }
+        ]
+      },
+      {
+        day: "Saturday",
+        focus: "Conditioning",
+        exercises: [
+          {
+            name: "Brisk Walk / Jog – 30 mins",
+            description: "Alternate between walking and light jogging to improve endurance.",
+            image: "https://images.unsplash.com/photo-1483721310020-03333e577078"
+          }
+        ]
+      },
+      {
+        day: "Sunday",
+        focus: "Rest Day",
+        exercises: [
+          {
+            name: "Complete Rest",
+            description: "Allow muscles to recover fully. Light stretching is optional.",
+            image: "https://images.unsplash.com/photo-1506126613408-eca07ce68773"
+          }
+        ]
+      }
+    ];
+      {
+        day: "Monday",
+        focus: "Upper Body + Core",
+        exercises: [
           "Tube Band Chest Press – 3 x 12",
           "Tube Band Seated Row – 3 x 12",
           "Tube Band Shoulder Press – 3 x 10",
@@ -170,7 +263,13 @@
       card.className = "card";
 
       const exercisesHTML = item.exercises
-        .map(ex => `<li>${ex}</li>`)
+        .map(ex => `
+          <li>
+            <img src="${ex.image}" alt="${ex.name}" style="width:100%; max-height:220px; object-fit:cover; border-radius:10px; margin-bottom:10px;" />
+            <strong>${ex.name}</strong><br>
+            <span style="color:#555; font-size:14px; line-height:1.5;">${ex.description}</span>
+          </li>
+        `)
         .join("");
 
       card.innerHTML = `
