@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BandFit Pro Max</title>
+  <title>BandFit – Apple Fitness Style</title>
 
   <meta name="theme-color" content="#0b1220" />
 
@@ -15,35 +15,137 @@
       color:#fff;
     }
 
-    .app{max-width:430px;margin:0 auto;min-height:100vh;display:flex;flex-direction:column;}
+    .app{
+      max-width:430px;
+      margin:0 auto;
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+    }
 
-    .header{padding:16px;}
-    .title{font-size:22px;font-weight:700;}
-    .stats{display:flex;justify-content:space-between;font-size:12px;color:#94a3b8;margin-top:6px;}
+    .header{
+      padding:18px;
+    }
 
-    .content{flex:1;overflow:auto;padding:12px;}
+    .title{
+      font-size:26px;
+      font-weight:800;
+    }
 
-    .card{background:#111827;border-radius:18px;padding:14px;margin-bottom:12px;}
+    .subtitle{
+      font-size:12px;
+      color:#94a3b8;
+      margin-top:4px;
+    }
 
-    .day{font-size:18px;font-weight:700;}
-    .focus{font-size:12px;color:#94a3b8;margin-bottom:8px;}
+    .stats{
+      display:flex;
+      justify-content:space-between;
+      margin-top:10px;
+      font-size:12px;
+      color:#94a3b8;
+    }
 
-    .exercise{background:#0f172a;padding:8px;border-radius:10px;margin-bottom:6px;font-size:13px;}
+    .content{
+      flex:1;
+      overflow:auto;
+      padding:12px;
+    }
 
-    button{width:100%;padding:10px;border-radius:12px;border:none;margin-top:8px;font-weight:600;}
+    .card{
+      background:linear-gradient(145deg,#111827,#0f172a);
+      border-radius:22px;
+      padding:16px;
+      margin-bottom:14px;
+      box-shadow:0 10px 30px rgba(0,0,0,0.35);
+      transition:0.2s;
+    }
 
-    .complete{background:#3b82f6;color:#fff;}
+    .card:active{transform:scale(0.98);}
+
+    .day{font-size:20px;font-weight:800;}
+    .focus{font-size:12px;color:#94a3b8;margin-bottom:10px;}
+
+    .exercise{
+      background:#0b1220;
+      padding:10px;
+      border-radius:12px;
+      margin-bottom:6px;
+      font-size:13px;
+    }
+
+    .btn{
+      width:100%;
+      padding:12px;
+      border-radius:14px;
+      border:none;
+      margin-top:10px;
+      font-weight:700;
+      background:#3b82f6;
+      color:white;
+    }
+
     .done{background:#22c55e;}
 
-    .panel{background:#111827;padding:10px;border-radius:12px;margin-bottom:10px;}
+    .panel{
+      background:#111827;
+      padding:12px;
+      border-radius:18px;
+      margin-bottom:12px;
+    }
 
-    input[type=range]{width:100%;}
+    input[type=range]{width:100%;accent-color:#3b82f6;}
 
-    canvas{background:#0f172a;border-radius:12px;margin-top:10px;width:100%;}
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(7,1fr);
+      gap:5px;
+      margin-bottom:12px;
+    }
 
-    .grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-bottom:10px;}
-    .daybox{background:#111827;padding:6px;border-radius:6px;text-align:center;font-size:10px;}
-    .heat{background:#22c55e;color:#000;}
+    .daybox{
+      background:#111827;
+      padding:8px;
+      border-radius:10px;
+      text-align:center;
+      font-size:10px;
+      color:#94a3b8;
+    }
+
+    .heat{
+      background:#22c55e;
+      color:#000;
+      font-weight:700;
+    }
+
+    canvas{
+      background:#0f172a;
+      border-radius:16px;
+      margin-top:10px;
+      width:100%;
+    }
+
+    .segment{
+      display:flex;
+      background:#111827;
+      border-radius:14px;
+      overflow:hidden;
+      margin-bottom:12px;
+    }
+
+    .segment div{
+      flex:1;
+      text-align:center;
+      padding:8px;
+      font-size:12px;
+      color:#94a3b8;
+      cursor:pointer;
+    }
+
+    .segment .active{
+      background:#3b82f6;
+      color:white;
+    }
   </style>
 </head>
 <body>
@@ -51,26 +153,34 @@
 <div class="app">
 
   <div class="header">
-    <div class="title">BandFit Pro Max</div>
+    <div class="title">BandFit</div>
+    <div class="subtitle">Apple Fitness Style Adaptive Training</div>
+
     <div class="stats">
       <div>🔥 Streak: <span id="streak">0</span></div>
-      <div>🔥 Cal: <span id="cal">0</span></div>
+      <div>🔥 Calories: <span id="cal">0</span></div>
     </div>
   </div>
 
   <div class="content">
 
-    <div class="panel">
-      🎯 Fatigue
-      <input id="fatigue" type="range" min="1" max="10" value="5" />
-      <button class="complete" onclick="generateAI()">Generate AI Workout</button>
+    <div class="segment">
+      <div class="active">Today</div>
+      <div>Week</div>
+      <div>AI</div>
     </div>
 
     <div class="grid" id="calendar"></div>
 
-    <canvas id="chart" height="120"></canvas>
+    <div class="panel">
+      🎯 Fatigue Level
+      <input id="fatigue" type="range" min="1" max="10" value="5" />
+      <button class="btn" onclick="generateAI()">Generate Workout</button>
+    </div>
 
     <div id="app"></div>
+
+    <canvas id="chart" height="120"></canvas>
 
   </div>
 </div>
@@ -86,13 +196,11 @@ function save(){
   localStorage.setItem('history',JSON.stringify(history));
 }
 
-const streakEl=document.getElementById('streak');
-const calEl=document.getElementById('cal');
-streakEl.innerText=streak;
-calEl.innerText=cal;
+document.getElementById('streak').innerText=streak;
+document.getElementById('cal').innerText=cal;
 
-const days=['S','M','T','W','T','F','S'];
 const calBox=document.getElementById('calendar');
+const days=['S','M','T','W','T','F','S'];
 
 function buildCal(){
   calBox.innerHTML='';
@@ -110,8 +218,14 @@ let workouts=[];
 
 function generateAI(){
   let f=+document.getElementById('fatigue').value;
-  let plan=f>=8?['Walk','Stretch']:(f>=5?['Band Press','Push-ups','Squats']:['Burpees','Lunges','Plank']);
-  workouts=[{day:'Today',focus:'AI Plan',cal:200,ex:plan}];
+
+  let plan = f>=8
+    ? ['Walk','Stretch','Mobility']
+    : f>=5
+    ? ['Band Press','Push-ups','Squats']
+    : ['Burpees','Lunges','Plank'];
+
+  workouts=[{day:'Today',focus:'Adaptive AI Session',cal:220,ex:plan}];
   render();
 }
 
@@ -125,22 +239,26 @@ function render(){
 
     let html=`<div class='day'>${w.day}</div><div class='focus'>${w.focus}</div>`;
     w.ex.forEach(e=>html+=`<div class='exercise'>${e}</div>`);
-    html+=`<button class='complete'>Complete</button>`;
+    html+=`<button class='btn'>Complete</button>`;
 
     c.innerHTML=html;
 
     let btn=c.querySelector('button');
+
     btn.onclick=()=>{
       btn.classList.add('done');
-      btn.innerText='Done';
+      btn.innerText='Completed';
 
       streak++;
       cal+=w.cal;
+
       history.push({t:Date.now(),cal:w.cal});
 
       save();
-      streakEl.innerText=streak;
-      calEl.innerText=cal;
+
+      document.getElementById('streak').innerText=streak;
+      document.getElementById('cal').innerText=cal;
+
       draw();
     };
 
@@ -148,16 +266,17 @@ function render(){
   });
 }
 
+render();
+
 function draw(){
-  let ctx=document.getElementById('chart').getContext('2d');
+  const ctx=document.getElementById('chart').getContext('2d');
   ctx.clearRect(0,0,400,120);
 
   history.slice(-5).forEach((h,i)=>{
     ctx.fillStyle='#22c55e';
-    ctx.fillRect(30+i*70,100,(h.cal%100),-(h.cal%80));
+    ctx.fillRect(30+i*70,100,(h.cal%120),-(h.cal%80));
   });
 }
-
 draw();
 </script>
 
