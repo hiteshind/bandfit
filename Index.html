@@ -1,0 +1,553 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2685.5">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="en"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;title&gt;BandFit • Home Resistance Band Workouts&lt;/title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script src="https://cdn.tailwindcss.com"&gt;&lt;/script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;amp;family=Space+Grotesk:wght@500;600&amp;amp;display=swap');</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>body {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-family: 'Inter', system_ui, sans-serif;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.heading-font {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-family: 'Space Grotesk', sans-serif;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.exercise-card {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.exercise-card:hover {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>transform: translateY(-8px);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.nav-active {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-bottom: 3px solid #22c55e;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body class="bg-zinc-950 text-white"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="flex h-screen overflow-hidden"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Sidebar --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="w-72 bg-zinc-900 border-r border-zinc-800 flex flex-col"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="p-6 border-b border-zinc-800"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="flex items-center gap-3"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="w-10 h-10 bg-green-500 rounded-2xl flex items-center justify-center text-2xl"&gt;💪&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;h1 class="heading-font text-3xl font-semibold tracking-tighter"&gt;BandFit&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="text-xs text-zinc-500 -mt-1"&gt;Tube Band Training&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="p-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;nav class="space-y-1"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;a href="#" onclick="showSection('home')" class="nav-item flex items-center gap-3 px-4 py-3 rounded-2xl hover:bg-zinc-800 text-zinc-400 hover:text-white nav-active" id="nav-home"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;i class="fa-solid fa-house w-5"&gt;&lt;/i&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span class="font-medium"&gt;Home&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;a href="#" onclick="showSection('exercises')" class="nav-item flex items-center gap-3 px-4 py-3 rounded-2xl hover:bg-zinc-800 text-zinc-400 hover:text-white" id="nav-exercises"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;i class="fa-solid fa-dumbbell w-5"&gt;&lt;/i&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span class="font-medium"&gt;All Exercises&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;a href="#" onclick="showSection('routines')" class="nav-item flex items-center gap-3 px-4 py-3 rounded-2xl hover:bg-zinc-800 text-zinc-400 hover:text-white" id="nav-routines"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;i class="fa-solid fa-list-check w-5"&gt;&lt;/i&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span class="font-medium"&gt;Routines&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;a href="#" onclick="showSection('tracker')" class="nav-item flex items-center gap-3 px-4 py-3 rounded-2xl hover:bg-zinc-800 text-zinc-400 hover:text-white" id="nav-tracker"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;i class="fa-solid fa-chart-line w-5"&gt;&lt;/i&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span class="font-medium"&gt;Workout Tracker&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/nav&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="mt-auto p-6 border-t border-zinc-800"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="bg-zinc-800 rounded-3xl p-5 text-sm"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p class="font-medium mb-2"&gt;💡 Pro Tip&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p class="text-zinc-400 text-xs leading-relaxed"&gt;Anchor your tube band securely (door anchor or foot) and always check for wear before training.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Main Content --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="flex-1 overflow-auto"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;!-- Top Bar --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="bg-zinc-900 border-b border-zinc-800 px-8 py-5 flex items-center justify-between sticky top-0 z-10"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="flex items-center gap-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h2 class="text-2xl font-semibold heading-font" id="page-title"&gt;Welcome back, Champion&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="flex items-center gap-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="bg-zinc-800 text-xs px-4 py-2 rounded-2xl flex items-center gap-2"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span id="current-level"&gt;Intermediate • 12 workouts&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;button onclick="startQuickWorkout()"<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                            </span>class="bg-green-500 hover:bg-green-600 transition-colors text-black font-semibold px-6 py-3 rounded-2xl flex items-center gap-2"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;i class="fa-solid fa-play"&gt;&lt;/i&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span&gt;Quick Workout&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;!-- Home Section --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="section-home" class="p-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="max-w-6xl mx-auto"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="bg-gradient-to-br from-green-500 to-emerald-600 rounded-3xl p-8 text-black"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;h3 class="text-4xl font-bold heading-font mb-2"&gt;20 min&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;p class="text-xl opacity-90"&gt;Full Body Burner&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;button onclick="startRoutine(0)"<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>class="mt-8 bg-white text-black px-8 py-4 rounded-2xl font-semibold flex items-center gap-3 hover:scale-105 transition-transform"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>Start Now &lt;i class="fa-solid fa-arrow-right"&gt;&lt;/i&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">                        </span></p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="bg-zinc-800 rounded-3xl p-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;h3 class="text-4xl font-bold heading-font mb-2"&gt;45 min&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;p class="text-xl"&gt;Push-Pull-Legs Split&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;button onclick="startRoutine(1)"<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>class="mt-8 bg-white/10 hover:bg-white/20 transition-colors px-8 py-4 rounded-2xl font-semibold"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>View Routine</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">                        </span></p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="bg-zinc-800 rounded-3xl p-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="flex justify-between items-end"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>&lt;div class="text-5xl font-bold heading-font text-green-400"&gt;7&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>&lt;div class="text-sm text-zinc-400"&gt;day streak 🔥&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;i class="fa-solid fa-fire text-6xl text-orange-500"&gt;&lt;/i&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;!-- Today's Recommendation --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h3 class="text-xl font-semibold mb-6 flex items-center gap-3"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span&gt;Recommended for Today&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span class="text-xs bg-zinc-800 px-3 py-1 rounded-full"&gt;Full Body&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/h3&gt;</p>
+<p class="p2"><span class="Apple-converted-space">                    </span></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" id="recommended-exercises"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;!-- Populated by JS --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;!-- All Exercises Section --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="section-exercises" class="p-8 hidden"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="max-w-6xl mx-auto"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="flex gap-3 mb-8 flex-wrap" id="muscle-filters"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;!-- JS populated --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">                    </span></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="all-exercises"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;!-- Populated by JS --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;!-- Routines Section --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="section-routines" class="p-8 hidden"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="max-w-6xl mx-auto"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h2 class="text-3xl font-semibold mb-8 heading-font"&gt;Workout Routines&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="space-y-8" id="routines-list"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;!-- JS populated --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;!-- Tracker Section --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="section-tracker" class="p-8 hidden"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="max-w-4xl mx-auto"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h2 class="text-3xl font-semibold mb-8 heading-font"&gt;Workout History&lt;/h2&gt;</p>
+<p class="p2"><span class="Apple-converted-space">                    </span></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="bg-zinc-900 rounded-3xl p-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="flex justify-between mb-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;div class="text-6xl font-bold heading-font text-green-400" id="total-workouts"&gt;12&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;div class="text-zinc-400"&gt;Total Workouts&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="text-right"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;div class="text-6xl font-bold heading-font" id="total-minutes"&gt;420&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;div class="text-zinc-400"&gt;Minutes Trained&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">                        </span></p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;button onclick="logWorkout()"<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                                </span>class="w-full bg-green-500 hover:bg-green-600 text-black py-6 rounded-3xl text-xl font-semibold transition-colors"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>Log Today's Workout</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">                    </span></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="mt-8 text-sm text-zinc-400"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p&gt;Track your consistency. Resistance band training builds strength, mobility, and muscle endurance.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Exercise Detail Modal --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div id="exercise-modal" class="hidden fixed inset-0 bg-black/80 flex items-center justify-center z-50"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="bg-zinc-900 max-w-lg w-full mx-4 rounded-3xl overflow-hidden"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="relative h-64 bg-zinc-800" id="modal-image"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;!-- Image placeholder --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="p-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="flex justify-between items-start mb-6"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;h3 class="text-3xl font-semibold heading-font" id="modal-title"&gt;&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;button onclick="closeModal()" class="text-3xl leading-none text-zinc-400 hover:text-white"&gt;×&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">                    </span></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="flex gap-6 text-sm mb-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;span class="text-zinc-400"&gt;Target&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="font-medium" id="modal-muscle"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;span class="text-zinc-400"&gt;Difficulty&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="font-medium" id="modal-difficulty"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">                    </span></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="mb-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;h4 class="font-medium mb-3 text-green-400"&gt;HOW TO PERFORM&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="text-zinc-300 leading-relaxed" id="modal-description"&gt;&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">                    </span></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="grid grid-cols-2 gap-6 text-sm"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="bg-zinc-800 rounded-2xl p-5"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="text-zinc-400 mb-1"&gt;Reps&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="text-3xl font-semibold" id="modal-reps"&gt;12-15&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="bg-zinc-800 rounded-2xl p-5"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="text-zinc-400 mb-1"&gt;Sets&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="text-3xl font-semibold" id="modal-sets"&gt;3-4&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="border-t border-zinc-800 p-4 flex gap-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;button onclick="closeModal()"<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                            </span>class="flex-1 py-4 rounded-2xl border border-zinc-700 hover:bg-zinc-800 transition-colors"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>Close</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;button onclick="addToWorkout()"<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                            </span>class="flex-1 py-4 bg-green-500 text-black rounded-2xl font-semibold hover:bg-green-400 transition-colors"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>Add to Workout</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>// Sample Data</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const exercises = [</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{</p>
+<p class="p1"><span class="Apple-converted-space">                </span>id: 1,</p>
+<p class="p1"><span class="Apple-converted-space">                </span>name: "Banded Squats",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>muscle: "Legs • Glutes",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>difficulty: "Beginner",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>reps: "12-20",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>sets: "4",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>description: "Stand on the center of the tube band with feet shoulder-width. Hold handles at shoulder height. Squat down keeping chest up and knees tracking over toes. Drive through heels to stand.",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>image: "🦵"</p>
+<p class="p1"><span class="Apple-converted-space">            </span>},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{</p>
+<p class="p1"><span class="Apple-converted-space">                </span>id: 2,</p>
+<p class="p1"><span class="Apple-converted-space">                </span>name: "Standing Rows",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>muscle: "Back • Shoulders",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>difficulty: "Intermediate",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>reps: "12-15",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>sets: "3",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>description: "Anchor band at chest height. Pull handles towards your torso squeezing shoulder blades together. Keep elbows close to body and control the return.",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>image: "🏋️"</p>
+<p class="p1"><span class="Apple-converted-space">            </span>},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{</p>
+<p class="p1"><span class="Apple-converted-space">                </span>id: 3,</p>
+<p class="p1"><span class="Apple-converted-space">                </span>name: "Overhead Press",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>muscle: "Shoulders",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>difficulty: "Intermediate",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>reps: "10-12",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>sets: "3",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>description: "Stand on band. Press handles overhead until arms are straight. Lower slowly to ear level. Keep core tight to protect lower back.",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>image: "🦾"</p>
+<p class="p1"><span class="Apple-converted-space">            </span>},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{</p>
+<p class="p1"><span class="Apple-converted-space">                </span>id: 4,</p>
+<p class="p1"><span class="Apple-converted-space">                </span>name: "Bicep Curls",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>muscle: "Biceps",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>difficulty: "Beginner",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>reps: "15",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>sets: "3",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>description: "Stand on the band with feet hip-width. Palms facing forward, curl handles towards shoulders. Squeeze at the top and lower with control.",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>image: "💪"</p>
+<p class="p1"><span class="Apple-converted-space">            </span>},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{</p>
+<p class="p1"><span class="Apple-converted-space">                </span>id: 5,</p>
+<p class="p1"><span class="Apple-converted-space">                </span>name: "Tricep Kickbacks",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>muscle: "Triceps",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>difficulty: "Intermediate",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>reps: "12-15",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>sets: "3",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>description: "Hinge at hips. Extend arms straight back while holding band. Focus on squeezing triceps at full extension.",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>image: "🔥"</p>
+<p class="p1"><span class="Apple-converted-space">            </span>},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{</p>
+<p class="p1"><span class="Apple-converted-space">                </span>id: 6,</p>
+<p class="p1"><span class="Apple-converted-space">                </span>name: "Glute Bridges",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>muscle: "Glutes • Hamstrings",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>difficulty: "Beginner",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>reps: "15-20",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>sets: "4",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>description: "Lie on back with band across hips. Feet flat, drive hips up squeezing glutes at the top. Band adds resistance to the movement.",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>image: "🍑"</p>
+<p class="p1"><span class="Apple-converted-space">            </span>},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{</p>
+<p class="p1"><span class="Apple-converted-space">                </span>id: 7,</p>
+<p class="p1"><span class="Apple-converted-space">                </span>name: "Lateral Raises",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>muscle: "Shoulders",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>difficulty: "Intermediate",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>reps: "12",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>sets: "3",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>description: "Stand on band. Raise arms out to sides until parallel with floor. Lead with elbows and keep slight bend in arms.",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>image: "🌊"</p>
+<p class="p1"><span class="Apple-converted-space">            </span>},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{</p>
+<p class="p1"><span class="Apple-converted-space">                </span>id: 8,</p>
+<p class="p1"><span class="Apple-converted-space">                </span>name: "Woodchoppers",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>muscle: "Core • Obliques",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>difficulty: "Advanced",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>reps: "12 each side",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>sets: "3",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>description: "Anchor band high. Rotate torso pulling handle diagonally across body. Engage core throughout movement.",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>image: "🌀"</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>];</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>const routines = [</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{</p>
+<p class="p1"><span class="Apple-converted-space">                </span>name: "Full Body Blast",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>duration: "25 min",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>level: "Beginner",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>exercises: ["Banded Squats", "Standing Rows", "Overhead Press", "Bicep Curls", "Glute Bridges"],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>focus: "Total body strength &amp; endurance"</p>
+<p class="p1"><span class="Apple-converted-space">            </span>},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{</p>
+<p class="p1"><span class="Apple-converted-space">                </span>name: "Upper Body Shred",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>duration: "35 min",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>level: "Intermediate",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>exercises: ["Standing Rows", "Overhead Press", "Lateral Raises", "Bicep Curls", "Tricep Kickbacks"],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>focus: "Build strong shoulders, back &amp; arms"</p>
+<p class="p1"><span class="Apple-converted-space">            </span>},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{</p>
+<p class="p1"><span class="Apple-converted-space">                </span>name: "Lower Body Burn",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>duration: "30 min",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>level: "All Levels",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>exercises: ["Banded Squats", "Glute Bridges", "Lunges", "Calf Raises"],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>focus: "Legs &amp; posterior chain"</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>];</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// Tailwind script already loaded</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function showSection(section) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.querySelectorAll('[id^="section-"]').forEach(s =&gt; s.classList.add('hidden'));</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById(`section-${section}`).classList.remove('hidden');</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Update nav</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.querySelectorAll('.nav-item').forEach(nav =&gt; nav.classList.remove('nav-active'));</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById(`nav-${section}`).classList.add('nav-active');</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (section === 'home') document.getElementById('page-title').textContent = "Welcome back, Champion";</p>
+<p class="p1"><span class="Apple-converted-space">            </span>else if (section === 'exercises') document.getElementById('page-title').textContent = "All Exercises";</p>
+<p class="p1"><span class="Apple-converted-space">            </span>else if (section === 'routines') document.getElementById('page-title').textContent = "Training Programs";</p>
+<p class="p1"><span class="Apple-converted-space">            </span>else if (section === 'tracker') document.getElementById('page-title').textContent = "Progress Tracker";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function renderExercises(containerId, filteredExercises) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const container = document.getElementById(containerId);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>container.innerHTML = '';</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>filteredExercises.forEach(ex =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const div = document.createElement('div');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>div.className = "exercise-card bg-zinc-900 rounded-3xl overflow-hidden cursor-pointer";</p>
+<p class="p1"><span class="Apple-converted-space">                </span>div.innerHTML = `</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="h-52 bg-zinc-800 flex items-center justify-center text-7xl border-b border-zinc-700"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>${ex.image}</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="p-6"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="font-semibold text-lg mb-1"&gt;${ex.name}&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="text-green-400 text-sm"&gt;${ex.muscle}&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="flex justify-between text-xs mt-4 text-zinc-400"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;span&gt;${ex.reps} reps&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;span&gt;${ex.difficulty}&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>`;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>div.onclick = () =&gt; showExerciseDetail(ex);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>container.appendChild(div);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function showExerciseDetail(exercise) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('modal-title').textContent = exercise.name;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('modal-muscle').textContent = exercise.muscle;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('modal-difficulty').textContent = exercise.difficulty;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('modal-description').textContent = exercise.description;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('modal-reps').textContent = exercise.reps;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('modal-sets').textContent = exercise.sets;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('modal-image').innerHTML = `</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="h-full flex items-center justify-center text-[180px] bg-gradient-to-br from-zinc-700 to-zinc-900"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>${exercise.image}</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('exercise-modal').classList.remove('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function closeModal() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('exercise-modal').classList.add('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function addToWorkout() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>alert("✅ Exercise added to your current workout!");</p>
+<p class="p1"><span class="Apple-converted-space">            </span>closeModal();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function renderRecommended() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const container = document.getElementById('recommended-exercises');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>container.innerHTML = '';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const recs = exercises.slice(0, 4);</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>recs.forEach(ex =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const div = document.createElement('div');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>div.className = "bg-zinc-900 rounded-3xl p-6 cursor-pointer exercise-card";</p>
+<p class="p1"><span class="Apple-converted-space">                </span>div.innerHTML = `</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="text-6xl mb-6"&gt;${ex.image}&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="font-semibold"&gt;${ex.name}&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="text-xs text-green-400 mt-1"&gt;${ex.muscle}&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>`;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>div.onclick = () =&gt; showExerciseDetail(ex);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>container.appendChild(div);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function renderRoutines() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const container = document.getElementById('routines-list');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>container.innerHTML = '';</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>routines.forEach((routine, index) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const div = document.createElement('div');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>div.className = "bg-zinc-900 rounded-3xl p-8 flex flex-col md:flex-row gap-8";</p>
+<p class="p1"><span class="Apple-converted-space">                </span>div.innerHTML = `</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="flex-1"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="flex items-center justify-between"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="heading-font text-3xl"&gt;${routine.name}&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="bg-green-500 text-black text-xs font-bold px-4 py-2 rounded-2xl"&gt;${routine.duration}&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="text-zinc-400 mt-2"&gt;${routine.focus}&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="mt-6"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="text-sm text-zinc-400 mb-3"&gt;INCLUDES&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="flex flex-wrap gap-2"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>${routine.exercises.map(ex =&gt; `&lt;span class="bg-zinc-800 text-xs px-4 py-2 rounded-2xl"&gt;${ex}&lt;/span&gt;`).join('')}</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;button onclick="startRoutine(${index})"<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                                </span>class="bg-white text-black px-10 py-6 rounded-3xl font-semibold hover:bg-green-400 transition-colors whitespace-nowrap"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>START ROUTINE</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>`;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>container.appendChild(div);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function startRoutine(index) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const routine = routines[index];</p>
+<p class="p1"><span class="Apple-converted-space">            </span>alert(`🚀 Starting ${routine.name}!\n\nGet your tube band ready. This will be intense.`);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>// In real app would navigate to workout player</p>
+<p class="p1"><span class="Apple-converted-space">            </span>showSection('exercises');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function startQuickWorkout() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>alert("⚡ Quick 15-minute Full Body workout started!\n\nExercises will appear one by one.");</p>
+<p class="p1"><span class="Apple-converted-space">            </span>showSection('exercises');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function logWorkout() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>let total = parseInt(document.getElementById('total-workouts').textContent);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>let minutes = parseInt(document.getElementById('total-minutes').textContent);</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>total++;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>minutes += 35;</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('total-workouts').textContent = total;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('total-minutes').textContent = minutes;</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>alert("✅ Workout logged! Great work today.");</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// Initialize filters</p>
+<p class="p1"><span class="Apple-converted-space">        </span>function initFilters() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const muscles = ["All", "Legs", "Back", "Shoulders", "Arms", "Core"];</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const container = document.getElementById('muscle-filters');</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>muscles.forEach(muscle =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const btn = document.createElement('button');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>btn.className = `px-6 py-3 rounded-2xl text-sm transition-all ${muscle === 'All' ? 'bg-green-500 text-black' : 'bg-zinc-800 hover:bg-zinc-700'}`;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>btn.textContent = muscle;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>btn.onclick = () =&gt; filterExercises(muscle);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>container.appendChild(btn);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function filterExercises(muscle) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>let filtered = exercises;</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (muscle !== "All") {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>filtered = exercises.filter(ex =&gt; ex.muscle.toLowerCase().includes(muscle.toLowerCase()));</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>renderExercises('all-exercises', filtered);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// Main initialization</p>
+<p class="p1"><span class="Apple-converted-space">        </span>function initApp() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Render everything</p>
+<p class="p1"><span class="Apple-converted-space">            </span>renderRecommended();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>renderExercises('all-exercises', exercises);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>renderRoutines();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>initFilters();</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Show home by default</p>
+<p class="p1"><span class="Apple-converted-space">            </span>showSection('home');</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>console.log('%cBandFit web app ready 💪', 'color: #22c55e; font-size: 14px');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// Boot the app</p>
+<p class="p1"><span class="Apple-converted-space">        </span>window.onload = initApp;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
