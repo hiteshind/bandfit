@@ -1,43 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>BandFit Workout Planner</title>
   <style>
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
       font-family: Arial, sans-serif;
     }
 
     body {
-      background: #f5f7fa;
-      padding: 20px;
+      background: #f4f7fb;
       color: #222;
+      padding: 20px;
     }
 
     .container {
-      max-width: 900px;
+      max-width: 950px;
       margin: auto;
     }
 
     h1 {
       text-align: center;
       margin-bottom: 10px;
+      font-size: 2rem;
     }
 
     .subtitle {
       text-align: center;
       color: #666;
       margin-bottom: 30px;
+      line-height: 1.6;
     }
 
     .card {
-      background: white;
+      background: #fff;
       border-radius: 16px;
-      padding: 20px;
+      padding: 24px;
       margin-bottom: 24px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.06);
     }
@@ -56,20 +58,21 @@
     .exercise {
       border: 1px solid #eee;
       border-radius: 12px;
-      padding: 15px;
-      margin-bottom: 15px;
+      padding: 16px;
+      margin-bottom: 16px;
       background: #fafafa;
     }
 
     .exercise img {
       width: 100%;
-      max-height: 240px;
+      max-height: 250px;
       object-fit: cover;
       border-radius: 10px;
       margin-bottom: 12px;
     }
 
     .exercise-title {
+      font-size: 16px;
       font-weight: bold;
       margin-bottom: 8px;
     }
@@ -81,17 +84,28 @@
     }
 
     .btn {
-      margin-top: 15px;
-      padding: 10px 16px;
+      margin-top: 10px;
+      padding: 12px 18px;
       border: none;
       border-radius: 10px;
       background: #111827;
       color: white;
       cursor: pointer;
+      font-size: 14px;
     }
 
-    .completed {
+    .btn.completed {
       background: #16a34a;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 14px;
+      }
+
+      .card {
+        padding: 18px;
+      }
     }
   </style>
 </head>
@@ -100,14 +114,13 @@
     <h1>BandFit Workout Planner</h1>
     <p class="subtitle">
       Tube Resistance Bands + Bodyweight Routine<br>
-      Age 41 • Intermediate Fitness • General Fitness Goal
+      Age 41 • Intermediate Fitness Level • Goal: General Fitness
     </p>
 
     <div id="app"></div>
   </div>
 
   <script>
-    window.addEventListener('DOMContentLoaded', function () {
     const workoutPlan = [
       {
         day: "Monday",
@@ -115,12 +128,12 @@
         exercises: [
           {
             name: "Tube Band Chest Press – 3 x 12",
-            description: "Anchor the band behind you. Hold handles at chest level and press forward until arms are straight. Return slowly.",
+            description: "Anchor the band behind you. Hold handles at chest level and press forward until your arms are straight. Return slowly with control.",
             image: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=900&q=80"
           },
           {
             name: "Push-ups – 3 x 10",
-            description: "Keep body straight. Lower chest toward the floor and push back up with control.",
+            description: "Keep your body straight from head to heels. Lower your chest toward the floor, then push back up.",
             image: "https://images.unsplash.com/photo-1599058917212-d750089bc07e?auto=format&fit=crop&w=900&q=80"
           }
         ]
@@ -131,12 +144,12 @@
         exercises: [
           {
             name: "Band Squats – 4 x 12",
-            description: "Stand on the band with feet shoulder-width apart. Hold handles near shoulders, squat down, then stand up.",
+            description: "Stand on the band with feet shoulder-width apart. Hold handles at shoulder level, squat down, then stand back up.",
             image: "https://images.unsplash.com/photo-1434682881908-b43d0467b798?auto=format&fit=crop&w=900&q=80"
           },
           {
             name: "Reverse Lunges – 3 x 10 each leg",
-            description: "Step one leg backward, lower both knees, then push back to standing.",
+            description: "Step one foot backward, lower both knees to about 90 degrees, then return to standing.",
             image: "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=900&q=80"
           }
         ]
@@ -146,9 +159,53 @@
         focus: "Mobility + Recovery",
         exercises: [
           {
-            name: "Walking – 30 mins",
-            description: "Maintain a brisk walking pace for recovery and cardiovascular health.",
+            name: "Brisk Walking – 30 mins",
+            description: "Walk at a comfortable but brisk pace to improve recovery and cardiovascular fitness.",
             image: "https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?auto=format&fit=crop&w=900&q=80"
+          }
+        ]
+      },
+      {
+        day: "Thursday",
+        focus: "Back + Arms",
+        exercises: [
+          {
+            name: "Tube Band Row – 3 x 12",
+            description: "Loop the band around your feet or anchor it. Pull handles toward your torso while squeezing shoulder blades.",
+            image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=900&q=80"
+          }
+        ]
+      },
+      {
+        day: "Friday",
+        focus: "Full Body Circuit",
+        exercises: [
+          {
+            name: "Band Squat to Press – 3 x 12",
+            description: "Perform a squat first, then press the handles overhead as you stand up for a full-body movement.",
+            image: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=900&q=80"
+          }
+        ]
+      },
+      {
+        day: "Saturday",
+        focus: "Conditioning",
+        exercises: [
+          {
+            name: "Walk / Light Jog – 30 mins",
+            description: "Alternate between brisk walking and light jogging to improve endurance and conditioning.",
+            image: "https://images.unsplash.com/photo-1483721310020-03333e577078?auto=format&fit=crop&w=900&q=80"
+          }
+        ]
+      },
+      {
+        day: "Sunday",
+        focus: "Rest Day",
+        exercises: [
+          {
+            name: "Recovery Day",
+            description: "Complete rest or light stretching. Focus on hydration and muscle recovery.",
+            image: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=900&q=80"
           }
         ]
       }
@@ -156,18 +213,18 @@
 
     const app = document.getElementById("app");
 
-    workoutPlan.forEach(item => {
+    workoutPlan.forEach((item) => {
       const card = document.createElement("div");
       card.className = "card";
 
       let exercisesHTML = "";
 
-      item.exercises.forEach(ex => {
+      item.exercises.forEach((exercise) => {
         exercisesHTML += `
           <div class="exercise">
-            <img src="${ex.image}" alt="${ex.name}">
-            <div class="exercise-title">${ex.name}</div>
-            <div class="exercise-desc">${ex.description}</div>
+            <img src="${exercise.image}" alt="${exercise.name}" />
+            <div class="exercise-title">${exercise.name}</div>
+            <div class="exercise-desc">${exercise.description}</div>
           </div>
         `;
       });
@@ -180,16 +237,15 @@
       `;
 
       const button = card.querySelector(".btn");
-      button.addEventListener("click", () => {
-        button.classList.toggle("completed");
-        button.textContent = button.classList.contains("completed")
+      button.addEventListener("click", function () {
+        this.classList.toggle("completed");
+        this.textContent = this.classList.contains("completed")
           ? "Completed"
           : "Mark Complete";
       });
 
       app.appendChild(card);
     });
-      });
   </script>
 </body>
 </html>
