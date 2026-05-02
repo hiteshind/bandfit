@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BandFit Workout Planner</title>
   <style>
     * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
       font-family: Arial, sans-serif;
     }
 
     body {
       background: #f5f7fa;
-      color: #222;
       padding: 20px;
+      color: #222;
     }
 
     .container {
@@ -26,57 +26,71 @@
     h1 {
       text-align: center;
       margin-bottom: 10px;
-      font-size: 2rem;
     }
 
     .subtitle {
       text-align: center;
-      margin-bottom: 30px;
       color: #666;
+      margin-bottom: 30px;
     }
 
     .card {
       background: white;
-      border-radius: 14px;
+      border-radius: 16px;
       padding: 20px;
-      margin-bottom: 20px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      margin-bottom: 24px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
     }
 
     .day {
-      font-size: 1.2rem;
+      font-size: 22px;
       font-weight: bold;
-      margin-bottom: 5px;
+      margin-bottom: 6px;
     }
 
     .focus {
-      color: #555;
-      margin-bottom: 15px;
+      color: #666;
+      margin-bottom: 20px;
     }
 
-    ul {
-      list-style: none;
-    }
-
-    li {
-      padding: 10px;
-      background: #fafafa;
+    .exercise {
       border: 1px solid #eee;
+      border-radius: 12px;
+      padding: 15px;
+      margin-bottom: 15px;
+      background: #fafafa;
+    }
+
+    .exercise img {
+      width: 100%;
+      max-height: 240px;
+      object-fit: cover;
       border-radius: 10px;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
+    }
+
+    .exercise-title {
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .exercise-desc {
+      color: #555;
+      line-height: 1.5;
+      font-size: 14px;
     }
 
     .btn {
       margin-top: 15px;
+      padding: 10px 16px;
+      border: none;
+      border-radius: 10px;
       background: #111827;
       color: white;
-      border: none;
-      padding: 10px 16px;
-      border-radius: 10px;
       cursor: pointer;
     }
 
-    .btn.completed {
+    .completed {
       background: #16a34a;
     }
   </style>
@@ -89,10 +103,11 @@
       Age 41 • Intermediate Fitness • General Fitness Goal
     </p>
 
-    <div id="workout-container"></div>
+    <div id="app"></div>
   </div>
 
   <script>
+    window.addEventListener('DOMContentLoaded', function () {
     const workoutPlan = [
       {
         day: "Monday",
@@ -100,18 +115,13 @@
         exercises: [
           {
             name: "Tube Band Chest Press – 3 x 12",
-            description: "Anchor the band behind you, hold handles at chest level, and press forward until arms are extended. Return slowly.",
-            image: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438"
-          },
-          {
-            name: "Tube Band Seated Row – 3 x 12",
-            description: "Sit with legs extended, loop the band around your feet, and pull handles toward your torso while squeezing shoulder blades.",
-            image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b"
+            description: "Anchor the band behind you. Hold handles at chest level and press forward until arms are straight. Return slowly.",
+            image: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=900&q=80"
           },
           {
             name: "Push-ups – 3 x 10",
-            description: "Keep your body straight, hands under shoulders, lower chest to floor, then push back up.",
-            image: "https://images.unsplash.com/photo-1599058917212-d750089bc07e"
+            description: "Keep body straight. Lower chest toward the floor and push back up with control.",
+            image: "https://images.unsplash.com/photo-1599058917212-d750089bc07e?auto=format&fit=crop&w=900&q=80"
           }
         ]
       },
@@ -121,13 +131,13 @@
         exercises: [
           {
             name: "Band Squats – 4 x 12",
-            description: "Stand on the band with feet shoulder-width apart, handles at shoulders, squat down and stand back up.",
-            image: "https://images.unsplash.com/photo-1434682881908-b43d0467b798"
+            description: "Stand on the band with feet shoulder-width apart. Hold handles near shoulders, squat down, then stand up.",
+            image: "https://images.unsplash.com/photo-1434682881908-b43d0467b798?auto=format&fit=crop&w=900&q=80"
           },
           {
             name: "Reverse Lunges – 3 x 10 each leg",
-            description: "Step one foot backward, lower both knees to 90 degrees, then return to standing.",
-            image: "https://images.unsplash.com/photo-1518611012118-696072aa579a"
+            description: "Step one leg backward, lower both knees, then push back to standing.",
+            image: "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=900&q=80"
           }
         ]
       },
@@ -137,145 +147,35 @@
         exercises: [
           {
             name: "Walking – 30 mins",
-            description: "Maintain a brisk pace and upright posture for active recovery.",
-            image: "https://images.unsplash.com/photo-1476480862126-209bfaa8edc8"
-          }
-        ]
-      },
-      {
-        day: "Thursday",
-        focus: "Back + Arms",
-        exercises: [
-          {
-            name: "Tube Band Lat Pulldown – 3 x 12",
-            description: "Anchor band overhead, pull handles down toward shoulders while keeping chest lifted.",
-            image: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd"
-          }
-        ]
-      },
-      {
-        day: "Friday",
-        focus: "Full Body Circuit",
-        exercises: [
-          {
-            name: "Band Squat to Press – 3 x 12",
-            description: "Perform a squat, then press the handles overhead as you stand up.",
-            image: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd"
-          }
-        ]
-      },
-      {
-        day: "Saturday",
-        focus: "Conditioning",
-        exercises: [
-          {
-            name: "Brisk Walk / Jog – 30 mins",
-            description: "Alternate between walking and light jogging to improve endurance.",
-            image: "https://images.unsplash.com/photo-1483721310020-03333e577078"
-          }
-        ]
-      },
-      {
-        day: "Sunday",
-        focus: "Rest Day",
-        exercises: [
-          {
-            name: "Complete Rest",
-            description: "Allow muscles to recover fully. Light stretching is optional.",
-            image: "https://images.unsplash.com/photo-1506126613408-eca07ce68773"
+            description: "Maintain a brisk walking pace for recovery and cardiovascular health.",
+            image: "https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?auto=format&fit=crop&w=900&q=80"
           }
         ]
       }
     ];
-      {
-        day: "Monday",
-        focus: "Upper Body + Core",
-        exercises: [
-          "Tube Band Chest Press – 3 x 12",
-          "Tube Band Seated Row – 3 x 12",
-          "Tube Band Shoulder Press – 3 x 10",
-          "Push-ups – 3 x 10",
-          "Plank – 3 x 30 sec"
-        ]
-      },
-      {
-        day: "Tuesday",
-        focus: "Lower Body",
-        exercises: [
-          "Band Squats – 4 x 12",
-          "Reverse Lunges – 3 x 10 each leg",
-          "Glute Bridges – 3 x 15",
-          "Tube Band Romanian Deadlift – 3 x 12"
-        ]
-      },
-      {
-        day: "Wednesday",
-        focus: "Mobility + Recovery",
-        exercises: [
-          "Walking – 30 mins",
-          "Stretching – 15 mins",
-          "Light Yoga – 15 mins"
-        ]
-      },
-      {
-        day: "Thursday",
-        focus: "Back + Arms",
-        exercises: [
-          "Tube Band Lat Pulldown – 3 x 12",
-          "Bicep Curl – 3 x 12",
-          "Tricep Pushdown – 3 x 12",
-          "Band Face Pull – 3 x 15"
-        ]
-      },
-      {
-        day: "Friday",
-        focus: "Full Body Circuit",
-        exercises: [
-          "Band Squat to Press – 3 x 12",
-          "Push-ups – 3 x 12",
-          "Tube Band Rows – 3 x 12",
-          "Russian Twists – 3 x 20"
-        ]
-      },
-      {
-        day: "Saturday",
-        focus: "Conditioning",
-        exercises: [
-          "Brisk Walk / Jog – 30 mins",
-          "Bodyweight Circuit – 20 mins"
-        ]
-      },
-      {
-        day: "Sunday",
-        focus: "Rest Day",
-        exercises: [
-          "Complete Rest",
-          "Optional Light Walk",
-          "Hydration + Recovery"
-        ]
-      }
-    ];
 
-    const container = document.getElementById("workout-container");
+    const app = document.getElementById("app");
 
-    workoutPlan.forEach((item) => {
+    workoutPlan.forEach(item => {
       const card = document.createElement("div");
       card.className = "card";
 
-      const exercisesHTML = item.exercises
-        .map(ex => `
-          <li>
-            <img src="${ex.image}" alt="${ex.name}" style="width:100%; max-height:220px; object-fit:cover; border-radius:10px; margin-bottom:10px;" />
-            <strong>${ex.name}</strong><br>
-            <span style="color:#555; font-size:14px; line-height:1.5;">${ex.description}</span>
-          </li>
-        `)
-        .join("");
+      let exercisesHTML = "";
+
+      item.exercises.forEach(ex => {
+        exercisesHTML += `
+          <div class="exercise">
+            <img src="${ex.image}" alt="${ex.name}">
+            <div class="exercise-title">${ex.name}</div>
+            <div class="exercise-desc">${ex.description}</div>
+          </div>
+        `;
+      });
 
       card.innerHTML = `
         <div class="day">${item.day}</div>
         <div class="focus">${item.focus}</div>
-        <ul>${exercisesHTML}</ul>
+        ${exercisesHTML}
         <button class="btn">Mark Complete</button>
       `;
 
@@ -287,8 +187,9 @@
           : "Mark Complete";
       });
 
-      container.appendChild(card);
+      app.appendChild(card);
     });
+      });
   </script>
 </body>
 </html>
