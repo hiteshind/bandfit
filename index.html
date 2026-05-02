@@ -1,183 +1,195 @@
-import React, { useState } from "react";
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { CheckCircle2, Dumbbell, Calendar, Timer } from "lucide-react";
-import { motion } from "framer-motion";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BandFit Workout Planner</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
 
-const workoutPlan = [
-  {
-    day: "Monday",
-    focus: "Upper Body + Core",
-    exercises: [
-      "Tube Band Chest Press – 3 x 12",
-      "Tube Band Seated Row – 3 x 12",
-      "Tube Band Shoulder Press – 3 x 10",
-      "Push-ups – 3 x 10",
-      "Plank – 3 x 30 sec",
-      "Dead Bug – 3 x 12"
-    ]
-  },
-  {
-    day: "Tuesday",
-    focus: "Lower Body",
-    exercises: [
-      "Band Squats – 4 x 12",
-      "Reverse Lunges – 3 x 10 each leg",
-      "Glute Bridges – 3 x 15",
-      "Tube Band Romanian Deadlift – 3 x 12",
-      "Standing Calf Raises – 3 x 20"
-    ]
-  },
-  {
-    day: "Wednesday",
-    focus: "Mobility + Recovery",
-    exercises: [
-      "Walking – 30 mins",
-      "Hip Mobility Flow – 10 mins",
-      "Shoulder Stretching – 10 mins",
-      "Light Yoga – 15 mins"
-    ]
-  },
-  {
-    day: "Thursday",
-    focus: "Back + Arms",
-    exercises: [
-      "Tube Band Lat Pulldown – 3 x 12",
-      "Tube Band Bicep Curl – 3 x 12",
-      "Tube Band Tricep Pushdown – 3 x 12",
-      "Band Face Pull – 3 x 15",
-      "Mountain Climbers – 3 x 20"
-    ]
-  },
-  {
-    day: "Friday",
-    focus: "Full Body Circuit",
-    exercises: [
-      "Band Squat to Press – 3 x 12",
-      "Push-ups – 3 x 12",
-      "Tube Band Rows – 3 x 12",
-      "Walking Lunges – 3 x 10",
-      "Russian Twists – 3 x 20"
-    ]
-  },
-  {
-    day: "Saturday",
-    focus: "Conditioning",
-    exercises: [
-      "Brisk Walk / Jog – 30 mins",
-      "Bodyweight Circuit – 20 mins",
-      "Stretching – 10 mins"
-    ]
-  },
-  {
-    day: "Sunday",
-    focus: "Rest Day",
-    exercises: [
-      "Complete Rest",
-      "Optional Light Walk",
-      "Hydration + Recovery"
-    ]
-  }
-];
+    body {
+      background: #f5f7fa;
+      color: #222;
+      padding: 20px;
+    }
 
-export default function BandFitWorkoutApp() {
-  const [completed, setCompleted] = useState({});
+    .container {
+      max-width: 900px;
+      margin: auto;
+    }
 
-  const toggleComplete = (day) => {
-    setCompleted((prev) => ({
-      ...prev,
-      [day]: !prev[day]
-    }));
-  };
+    h1 {
+      text-align: center;
+      margin-bottom: 10px;
+      font-size: 2rem;
+    }
 
-  return (
-    <div className="min-h-screen bg-slate-50 p-4 md:p-8">
-      <div className="max-w-5xl mx-auto space-y-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="text-center"
-        >
-          <h1 className="text-4xl font-bold mb-2">BandFit Workout Planner</h1>
-          <p className="text-slate-600 text-lg">
-            Tube Resistance Bands + Bodyweight Routine for General Fitness
-          </p>
-          <p className="text-sm text-slate-500 mt-2">
-            Age 41 • Intermediate Fitness Level • 6 Days Active
-          </p>
-        </motion.div>
+    .subtitle {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #666;
+    }
 
-        <div className="grid md:grid-cols-3 gap-4">
-          <Card className="rounded-2xl shadow-sm">
-            <CardContent className="p-5 flex items-center gap-3">
-              <Dumbbell className="w-6 h-6" />
-              <div>
-                <p className="font-semibold">Goal</p>
-                <p className="text-sm text-slate-600">General Fitness</p>
-              </div>
-            </CardContent>
-          </Card>
+    .card {
+      background: white;
+      border-radius: 14px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
 
-          <Card className="rounded-2xl shadow-sm">
-            <CardContent className="p-5 flex items-center gap-3">
-              <Calendar className="w-6 h-6" />
-              <div>
-                <p className="font-semibold">Schedule</p>
-                <p className="text-sm text-slate-600">Weekly Plan</p>
-              </div>
-            </CardContent>
-          </Card>
+    .day {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
 
-          <Card className="rounded-2xl shadow-sm">
-            <CardContent className="p-5 flex items-center gap-3">
-              <Timer className="w-6 h-6" />
-              <div>
-                <p className="font-semibold">Session Time</p>
-                <p className="text-sm text-slate-600">35–45 mins</p>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
+    .focus {
+      color: #555;
+      margin-bottom: 15px;
+    }
 
-        <div className="grid gap-5">
-          {workoutPlan.map((item, index) => (
-            <motion.div
-              key={item.day}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.05 }}
-            >
-              <Card className="rounded-2xl shadow-sm border-0">
-                <CardContent className="p-6">
-                  <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-4">
-                    <div>
-                      <h2 className="text-xl font-semibold">{item.day}</h2>
-                      <p className="text-slate-600">{item.focus}</p>
-                    </div>
+    ul {
+      list-style: none;
+    }
 
-                    <Button
-                      onClick={() => toggleComplete(item.day)}
-                      className="rounded-xl"
-                      variant={completed[item.day] ? "secondary" : "default"}
-                    >
-                      <CheckCircle2 className="mr-2 h-4 w-4" />
-                      {completed[item.day] ? "Completed" : "Mark Complete"}
-                    </Button>
-                  </div>
+    li {
+      padding: 10px;
+      background: #fafafa;
+      border: 1px solid #eee;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
 
-                  <ul className="space-y-2 text-slate-700">
-                    {item.exercises.map((exercise, i) => (
-                      <li key={i} className="bg-white rounded-xl p-3 border">
-                        {exercise}
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
+    .btn {
+      margin-top: 15px;
+      background: #111827;
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .btn.completed {
+      background: #16a34a;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>BandFit Workout Planner</h1>
+    <p class="subtitle">
+      Tube Resistance Bands + Bodyweight Routine<br>
+      Age 41 • Intermediate Fitness • General Fitness Goal
+    </p>
+
+    <div id="workout-container"></div>
+  </div>
+
+  <script>
+    const workoutPlan = [
+      {
+        day: "Monday",
+        focus: "Upper Body + Core",
+        exercises: [
+          "Tube Band Chest Press – 3 x 12",
+          "Tube Band Seated Row – 3 x 12",
+          "Tube Band Shoulder Press – 3 x 10",
+          "Push-ups – 3 x 10",
+          "Plank – 3 x 30 sec"
+        ]
+      },
+      {
+        day: "Tuesday",
+        focus: "Lower Body",
+        exercises: [
+          "Band Squats – 4 x 12",
+          "Reverse Lunges – 3 x 10 each leg",
+          "Glute Bridges – 3 x 15",
+          "Tube Band Romanian Deadlift – 3 x 12"
+        ]
+      },
+      {
+        day: "Wednesday",
+        focus: "Mobility + Recovery",
+        exercises: [
+          "Walking – 30 mins",
+          "Stretching – 15 mins",
+          "Light Yoga – 15 mins"
+        ]
+      },
+      {
+        day: "Thursday",
+        focus: "Back + Arms",
+        exercises: [
+          "Tube Band Lat Pulldown – 3 x 12",
+          "Bicep Curl – 3 x 12",
+          "Tricep Pushdown – 3 x 12",
+          "Band Face Pull – 3 x 15"
+        ]
+      },
+      {
+        day: "Friday",
+        focus: "Full Body Circuit",
+        exercises: [
+          "Band Squat to Press – 3 x 12",
+          "Push-ups – 3 x 12",
+          "Tube Band Rows – 3 x 12",
+          "Russian Twists – 3 x 20"
+        ]
+      },
+      {
+        day: "Saturday",
+        focus: "Conditioning",
+        exercises: [
+          "Brisk Walk / Jog – 30 mins",
+          "Bodyweight Circuit – 20 mins"
+        ]
+      },
+      {
+        day: "Sunday",
+        focus: "Rest Day",
+        exercises: [
+          "Complete Rest",
+          "Optional Light Walk",
+          "Hydration + Recovery"
+        ]
+      }
+    ];
+
+    const container = document.getElementById("workout-container");
+
+    workoutPlan.forEach((item) => {
+      const card = document.createElement("div");
+      card.className = "card";
+
+      const exercisesHTML = item.exercises
+        .map(ex => `<li>${ex}</li>`)
+        .join("");
+
+      card.innerHTML = `
+        <div class="day">${item.day}</div>
+        <div class="focus">${item.focus}</div>
+        <ul>${exercisesHTML}</ul>
+        <button class="btn">Mark Complete</button>
+      `;
+
+      const button = card.querySelector(".btn");
+      button.addEventListener("click", () => {
+        button.classList.toggle("completed");
+        button.textContent = button.classList.contains("completed")
+          ? "Completed"
+          : "Mark Complete";
+      });
+
+      container.appendChild(card);
+    });
+  </script>
+</body>
+</html>
