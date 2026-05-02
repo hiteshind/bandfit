@@ -1,137 +1,183 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BandFit • Hybrid Training</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <style>
-        body { font-family: 'Inter', system_ui, sans-serif; }
-        .heading { font-family: system-ui, -apple-system, sans-serif; }
-        .exercise-card { transition: all 0.3s ease; }
-        .exercise-card:hover { transform: translateY(-8px); }
-    </style>
-</head>
-<body class="bg-zinc-950 text-white">
+import React, { useState } from "react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { CheckCircle2, Dumbbell, Calendar, Timer } from "lucide-react";
+import { motion } from "framer-motion";
 
-<div class="flex h-screen">
-    <div class="w-72 bg-zinc-900 border-r border-zinc-800 p-6 flex flex-col">
-        <div class="flex items-center gap-3 mb-10">
-            <div class="w-11 h-11 bg-green-500 rounded-2xl flex items-center justify-center text-3xl">💪</div>
-            <h1 class="heading text-3xl font-bold">BandFit</h1>
-        </div>
-        
-        <nav class="space-y-2 flex-1">
-            <a href="#" onclick="showSection('home')" class="nav-item flex items-center gap-3 px-4 py-3 rounded-2xl hover:bg-zinc-800" id="nav-home">🏠 Home</a>
-            <a href="#" onclick="showSection('weekly')" class="nav-item flex items-center gap-3 px-4 py-3 rounded-2xl hover:bg-zinc-800" id="nav-weekly">📅 5-Day Split</a>
-            <a href="#" onclick="showSection('warmup')" class="nav-item flex items-center gap-3 px-4 py-3 rounded-2xl hover:bg-zinc-800" id="nav-warmup">🔥 Warm-up</a>
-            <a href="#" onclick="showSection('exercises')" class="nav-item flex items-center gap-3 px-4 py-3 rounded-2xl hover:bg-zinc-800" id="nav-exercises">🏋️ Exercises</a>
-            <a href="#" onclick="showSection('tracker')" class="nav-item flex items-center gap-3 px-4 py-3 rounded-2xl hover:bg-zinc-800" id="nav-tracker">📊 Progress</a>
-        </nav>
-    </div>
-
-    <div class="flex-1 overflow-auto p-8">
-        <h1 class="text-4xl font-bold heading mb-8" id="page-title">BandFit • Band + Bodyweight</h1>
-
-        <!-- Warm-up Variations -->
-        <div id="section-warmup">
-            <h2 class="text-3xl font-bold mb-8">Warm-up Routine Variations</h2>
-            
-            <div class="flex gap-4 mb-8 border-b border-zinc-800 pb-4">
-                <button onclick="showWarmup(0)" class="warmup-tab px-6 py-3 rounded-2xl bg-green-500 text-black font-medium active" id="tab-0">Full Body</button>
-                <button onclick="showWarmup(1)" class="warmup-tab px-6 py-3 rounded-2xl hover:bg-zinc-800" id="tab-1">Upper Body</button>
-                <button onclick="showWarmup(2)" class="warmup-tab px-6 py-3 rounded-2xl hover:bg-zinc-800" id="tab-2">Lower Body</button>
-            </div>
-
-            <div id="warmup-content" class="bg-zinc-900 rounded-3xl p-8 max-w-2xl"></div>
-        </div>
-
-        <!-- Other sections (Tracker, Weekly, Exercises, Home) remain functional -->
-        <div id="section-tracker" class="hidden"> <!-- ... existing tracker content ... --> </div>
-        <div id="section-weekly" class="hidden"> <!-- ... existing weekly content ... --> </div>
-        <div id="section-exercises" class="hidden"> <!-- ... existing exercises ... --> </div>
-        <div id="section-home" class="hidden">
-            <h2 class="text-3xl font-semibold">Hybrid Training with Smart Warm-ups</h2>
-        </div>
-    </div>
-</div>
-
-<script>
-// Warm-up Variations
-const warmupRoutines = [
-    {
-        title: "Full Body Warm-up (Recommended)",
-        duration: "8-10 minutes",
-        steps: [
-            "5 minutes light cardio (marching in place or jumping jacks)",
-            "Band Pull-Aparts — 12 reps × 2 sets",
-            "Bodyweight Squats — 15 reps",
-            "Push-up Position Plank — 30-45 seconds",
-            "Walking Lunges — 10 steps per leg",
-            "Arm Circles + Shoulder Rolls — 10 each direction"
-        ]
-    },
-    {
-        title: "Upper Body Focus",
-        duration: "6-8 minutes",
-        steps: [
-            "Arm Circles (forward & backward) — 15 each",
-            "Band Pull-Aparts — 15 reps × 2",
-            "Push-up Position Plank — 45 seconds",
-            "Superman Holds — 10 reps",
-            "Shoulder Rolls + Neck Tilts",
-            "Band Face Pulls — 12 reps"
-        ]
-    },
-    {
-        title: "Lower Body Focus",
-        duration: "7-9 minutes",
-        steps: [
-            "5 minutes marching or high knees",
-            "Bodyweight Squats — 15 reps",
-            "Glute Bridges — 12 reps",
-            "Walking Lunges — 12 per leg",
-            "Hip Circles — 10 each direction",
-            "Calf Raises — 20 reps"
-        ]
-    }
+const workoutPlan = [
+  {
+    day: "Monday",
+    focus: "Upper Body + Core",
+    exercises: [
+      "Tube Band Chest Press – 3 x 12",
+      "Tube Band Seated Row – 3 x 12",
+      "Tube Band Shoulder Press – 3 x 10",
+      "Push-ups – 3 x 10",
+      "Plank – 3 x 30 sec",
+      "Dead Bug – 3 x 12"
+    ]
+  },
+  {
+    day: "Tuesday",
+    focus: "Lower Body",
+    exercises: [
+      "Band Squats – 4 x 12",
+      "Reverse Lunges – 3 x 10 each leg",
+      "Glute Bridges – 3 x 15",
+      "Tube Band Romanian Deadlift – 3 x 12",
+      "Standing Calf Raises – 3 x 20"
+    ]
+  },
+  {
+    day: "Wednesday",
+    focus: "Mobility + Recovery",
+    exercises: [
+      "Walking – 30 mins",
+      "Hip Mobility Flow – 10 mins",
+      "Shoulder Stretching – 10 mins",
+      "Light Yoga – 15 mins"
+    ]
+  },
+  {
+    day: "Thursday",
+    focus: "Back + Arms",
+    exercises: [
+      "Tube Band Lat Pulldown – 3 x 12",
+      "Tube Band Bicep Curl – 3 x 12",
+      "Tube Band Tricep Pushdown – 3 x 12",
+      "Band Face Pull – 3 x 15",
+      "Mountain Climbers – 3 x 20"
+    ]
+  },
+  {
+    day: "Friday",
+    focus: "Full Body Circuit",
+    exercises: [
+      "Band Squat to Press – 3 x 12",
+      "Push-ups – 3 x 12",
+      "Tube Band Rows – 3 x 12",
+      "Walking Lunges – 3 x 10",
+      "Russian Twists – 3 x 20"
+    ]
+  },
+  {
+    day: "Saturday",
+    focus: "Conditioning",
+    exercises: [
+      "Brisk Walk / Jog – 30 mins",
+      "Bodyweight Circuit – 20 mins",
+      "Stretching – 10 mins"
+    ]
+  },
+  {
+    day: "Sunday",
+    focus: "Rest Day",
+    exercises: [
+      "Complete Rest",
+      "Optional Light Walk",
+      "Hydration + Recovery"
+    ]
+  }
 ];
 
-function showWarmup(index) {
-    document.querySelectorAll('.warmup-tab').forEach((tab, i) => {
-        tab.classList.toggle('bg-green-500', i === index);
-        tab.classList.toggle('text-black', i === index);
-        tab.classList.toggle('bg-zinc-800', i !== index);
-    });
+export default function BandFitWorkoutApp() {
+  const [completed, setCompleted] = useState({});
 
-    const routine = warmupRoutines[index];
-    let html = `<h3 class="text-2xl font-bold mb-2">${routine.title}</h3>`;
-    html += `<p class="text-green-400 mb-8">${routine.duration}</p><ol class="space-y-6">`;
-    
-    routine.steps.forEach((step, i) => {
-        html += `<li class="flex gap-4"><span class="font-mono text-green-500">${(i+1).toString().padStart(2,'0')}</span><span>${step}</span></li>`;
-    });
-    html += `</ol>`;
-    
-    document.getElementById('warmup-content').innerHTML = html;
+  const toggleComplete = (day) => {
+    setCompleted((prev) => ({
+      ...prev,
+      [day]: !prev[day]
+    }));
+  };
+
+  return (
+    <div className="min-h-screen bg-slate-50 p-4 md:p-8">
+      <div className="max-w-5xl mx-auto space-y-6">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="text-center"
+        >
+          <h1 className="text-4xl font-bold mb-2">BandFit Workout Planner</h1>
+          <p className="text-slate-600 text-lg">
+            Tube Resistance Bands + Bodyweight Routine for General Fitness
+          </p>
+          <p className="text-sm text-slate-500 mt-2">
+            Age 41 • Intermediate Fitness Level • 6 Days Active
+          </p>
+        </motion.div>
+
+        <div className="grid md:grid-cols-3 gap-4">
+          <Card className="rounded-2xl shadow-sm">
+            <CardContent className="p-5 flex items-center gap-3">
+              <Dumbbell className="w-6 h-6" />
+              <div>
+                <p className="font-semibold">Goal</p>
+                <p className="text-sm text-slate-600">General Fitness</p>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card className="rounded-2xl shadow-sm">
+            <CardContent className="p-5 flex items-center gap-3">
+              <Calendar className="w-6 h-6" />
+              <div>
+                <p className="font-semibold">Schedule</p>
+                <p className="text-sm text-slate-600">Weekly Plan</p>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card className="rounded-2xl shadow-sm">
+            <CardContent className="p-5 flex items-center gap-3">
+              <Timer className="w-6 h-6" />
+              <div>
+                <p className="font-semibold">Session Time</p>
+                <p className="text-sm text-slate-600">35–45 mins</p>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+
+        <div className="grid gap-5">
+          {workoutPlan.map((item, index) => (
+            <motion.div
+              key={item.day}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.05 }}
+            >
+              <Card className="rounded-2xl shadow-sm border-0">
+                <CardContent className="p-6">
+                  <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-4">
+                    <div>
+                      <h2 className="text-xl font-semibold">{item.day}</h2>
+                      <p className="text-slate-600">{item.focus}</p>
+                    </div>
+
+                    <Button
+                      onClick={() => toggleComplete(item.day)}
+                      className="rounded-xl"
+                      variant={completed[item.day] ? "secondary" : "default"}
+                    >
+                      <CheckCircle2 className="mr-2 h-4 w-4" />
+                      {completed[item.day] ? "Completed" : "Mark Complete"}
+                    </Button>
+                  </div>
+
+                  <ul className="space-y-2 text-slate-700">
+                    {item.exercises.map((exercise, i) => (
+                      <li key={i} className="bg-white rounded-xl p-3 border">
+                        {exercise}
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
 }
-
-// Rest of the app (exercises, tracker, etc.) - keeping previous functionality
-// ... (You can keep the rest of the script from the previous version)
-
-function showSection(section) {
-    document.querySelectorAll('[id^="section-"]').forEach(s => s.classList.add('hidden'));
-    document.getElementById(`section-${section}`).classList.remove('hidden');
-}
-
-// Initialize
-window.onload = () => {
-    showWarmup(0);   // Default to Full Body
-    // Add your other render functions: renderExercises(), renderWeeklyPlan(), etc.
-    showSection('warmup'); // Start on warm-up page for now
-};
-</script>
-</body>
-</html>
